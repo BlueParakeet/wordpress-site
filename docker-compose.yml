@@ -28,14 +28,8 @@ services:
    pma:
      image: phpmyadmin/phpmyadmin:latest
      restart: always
-     environment:
-       PMA_HOST: db
-       PMA_PORT: 3306
-       MYSQL_ROOT_PASSWORD: somewordpress
      ports:
        - "8080:80"
-     links:
-       - db:db
 
 volumes:
     db_data: {}
