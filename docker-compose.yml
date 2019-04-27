@@ -24,18 +24,5 @@ services:
        WORDPRESS_DB_USER: wordpress
        WORDPRESS_DB_PASSWORD: wordpress
        WORDPRESS_DB_NAME: wordpress
-       WORDPRESS_DEBUG: 1
-   
-   phpmyadmin:
-     image: phpmyadmin/phpmyadmin:latest
-     restart: always
-     ports:
-      - "8080:80"
-     links:
-      - db:db
-
 volumes:
     db_data: {}
- 
- 
-
