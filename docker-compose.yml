@@ -42,6 +42,6 @@ services:
 
 volumes:
     db_data: {}
-    wp-app:
+    wp-data:
  
 
