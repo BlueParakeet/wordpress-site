@@ -18,9 +18,6 @@ services:
      image: wordpress:latest
      ports:
        - "8000:80"
-     volumes:
-      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
-      - ./wp-app:/var/www/html # Full wordpress project
      restart: always
      environment:
        WORDPRESS_DB_HOST: db:3306
@@ -29,7 +26,6 @@ services:
        WORDPRESS_DB_NAME: wordpress
        WORDPRESS_DEBUG: 1
    
-
    phpmyadmin:
      image: phpmyadmin/phpmyadmin:latest
      restart: always
