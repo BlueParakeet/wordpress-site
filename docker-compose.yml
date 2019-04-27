@@ -18,6 +18,9 @@ services:
      image: wordpress:latest
      ports:
        - "8000:80"
+     volumes:
+      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+      - ./wp-app:/var/www/html # Full wordpress project
      restart: always
      environment:
        WORDPRESS_DB_HOST: db:3306
@@ -46,6 +49,11 @@ services:
      # vstm: The sleep 10 is required so that the command is run after
      # mysql is initialized. Depending on your machine this might take
      # longer or it can go faster.
+     command: >
+      /bin/sh -c `
+      sleep 10;
+      wp core install --path="/var/www/html" --url="http://localhost:8000" --title="Local Wordpress By Docker" --admin_user=admin --admin_password=secret --admin_email=foo@bar.com
+      `
      # vstm: add shared volume (wp-app) 
      volumes:
       - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
@@ -59,4 +67,5 @@ volumes:
     db_data: {}
     # vstm: add shared volume
     wp-app:
+ 
 
